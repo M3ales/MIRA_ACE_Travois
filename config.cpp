@@ -12,10 +12,18 @@ class CfgPatches {
 	};
 };
 
-class Extended_PreInit_EventHandlers {
-    class ADDON {
-        init = QUOTE(call COMPILE_FILE(XEH_preInit));
+class CfgWeapons {
+	 class Launcher_Base_F;
+    class MIRA_ACE_Travois : Launcher_Base_F {
+        canLock = 0;
+        scope = 2;
+        scopeCurator = 2;
+        scopeArsenal = 2;
+        displayName = "ACE Travois";
+        model = "\501RDStretcher\model\501_stretcher.p3d";
+        picture = "\501RDStretcher\data\stretcher_co.paa";
     };
 };
 
 #include "CfgVehicles.hpp"
+#include "CfgEventHandlers.hpp"
