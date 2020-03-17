@@ -36,6 +36,8 @@ _object setVariable [QGVAR(canDrag), _enableDrag];
 _object setVariable [QGVAR(dragPosition), _position];
 _object setVariable [QGVAR(dragDirection), _direction];
 _object setVariable [QGVAR(ignoreWeightDrag), _ignoreWeightDrag];
+_object setVariable [QGVAR(travois), objNull];
+_object setVariable [QGVAR(onTravois), false];
 
 // add action to class if it is not already present
 

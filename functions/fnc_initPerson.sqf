@@ -18,4 +18,4 @@
 
 params ["_unit"];
 
-[_unit, true, [0,-1.2,0.3], 0] call FUNC(setDraggable);
+[_unit, true, [0,-1.9,0.3], 0] call FUNC(setDraggable);

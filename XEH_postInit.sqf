@@ -2,7 +2,7 @@
 #include "config_macros.hpp"
 
 if (isServer) then {
-    // release object on hard disconnection. Function is identical to killed
+    // release object and travois on hard disconnection. Function is identical to killed
     addMissionEventHandler ["HandleDisconnect", {_this call FUNC(handleKilled)}];
 };
 
@@ -27,3 +27,4 @@ if (isNil "ACE_maxWeightCarry") then {
 GVAR(travoisAnimation) = "HubWoundedProne_idle1";
 GVAR(travoisExitAnimation) = "AidlPpneMstpSnonWnonDnon_G03";
 GVAR(launcherItem) = "MIRA_ACE_Travois";
+GVAR(stretcherPos) = [0, -0.03, 0];

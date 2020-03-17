@@ -20,10 +20,13 @@ params ["_unit", "_target"];
 LOGF_2("params [%1, %2]",_unit,_target);
 
 // get attachTo offset and direction.
-_position = _target getVariable [QGVAR(dragPosition), [0, -1.5, 0.5]];
+_position = _target getVariable [QGVAR(dragPosition), [0, -2., 0.5]];
 _direction = _target getVariable [QGVAR(dragDirection), 180];
 
-LOGF_2("Attaching at %1, %2",_position,_direction);
+_travois = _target getVariable [QGVAR(travois), objNull];
+_travois disableCollisionWith _unit;
+
+LOGF_2("Attaching for drag at %1, %2",_position,_direction);
 
 [QEGVAR(common,setDir), [_target, _direction], _target] call CBA_fnc_targetEvent;
 _target attachTo [_unit, _position];
