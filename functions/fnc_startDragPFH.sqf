@@ -35,8 +35,8 @@ if !(_unit getVariable [QGVAR(isDragging), false]) exitWith {
     [_idPFH] call CBA_fnc_removePerFrameHandler;
 };
 
-//_unit getVariable [QGVAR(onTravois), false]
-if (!(_target getVariable [QGVAR(onTravois), false])) exitWith{
+//exit if not on Travois
+if (!(_target call FUNC(isOnTravois))) exitWith {
     LOG("Target not on Travois");
     [_unit, _target] call FUNC(dropObject);
     [_idPFH] call CBA_fnc_removePerFrameHandler;

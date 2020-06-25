@@ -21,7 +21,6 @@ LOGF_1("params [%1]",_unit);
 
 if (_unit getVariable [QGVAR(isDragging), false]) then {
     private _draggedObject = _unit getVariable [QGVAR(draggedObject), objNull];
-
     [_unit, _draggedObject] call FUNC(dropObject);
 };
 

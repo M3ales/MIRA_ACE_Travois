@@ -28,3 +28,4 @@ GVAR(travoisAnimation) = "HubWoundedProne_idle1";
 GVAR(travoisExitAnimation) = "AidlPpneMstpSnonWnonDnon_G03";
 GVAR(launcherItem) = "MIRA_ACE_Travois";
 GVAR(stretcherPos) = [0, -0.03, 0];
+GVAR(enabled) = true; //TODO: use this to auto add the ace action to people without the mod using cba event (wowe)

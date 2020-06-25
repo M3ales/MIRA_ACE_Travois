@@ -46,7 +46,7 @@ if (!(_target getVariable [QGVAR(onTravois), false])) exitWith {
         [_this, "grabDrag"] call EFUNC(common,doGesture);
     }, _unit] call CBA_fnc_execNextFrame;
 }; */
-_target setDir (getDir _unit);
+_target setDir (getDir _unit + 180);
 _target setPosASL (getPosASL _unit vectorAdd (vectorDir _unit vectorMultiply 1.5));
 //[_target, "AinjPpneMrunSnonWnonDb_grab", 2, true] call EFUNC(common,doAnimation);
 // prevents draging and carrying at the same time

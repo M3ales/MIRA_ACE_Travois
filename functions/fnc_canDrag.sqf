@@ -19,9 +19,10 @@
 
 params ["_unit", "_target"];
 
-LOGF_1("Attempting to drag %1 using Travois", _unit);
-if!([_target] call FUNC(isOnTravois)) exitWith{LOG("Failed: Target not on Travois");false};
-if((typeOf _target) isKindOf "StaticWeapon") exitWith {LOG("Failed: Target not is static weapon");false};
-if !([_unit, _target, ["isNotSwimming"]] call EFUNC(common,canInteractWith)) exitWith {LOG("Failed: Target is swimming");false};
+if!([_target] call FUNC(isOnTravois)) exitWith {LOGF_1("%1.canDrag : false - not on Travois", _target); false};
+if((typeOf _target) isKindOf "StaticWeapon") exitWith {LOGF_1("%1.canDrag : false - is a static weapon.", _target); false};
+if !([_unit, _target, ["isNotSwimming"]] call EFUNC(common,canInteractWith)) exitWith {LOGF_1("%1.canDrag : false - Swimming", _target); false};
 
-alive _target && {_target getVariable [QGVAR(canDrag), false]}
+_res = alive _target && {_target getVariable [QGVAR(canDrag), false]};
+LOGF_2("%1.canDrag : %2", _target, _res);
+_res

@@ -8,7 +8,7 @@
  * 0: Any object <OBJECT>
  * 1: true to enable dragging, false to disable <BOOL>
  * 2: Position offset for attachTo command (optional; default: [0,0,0])<ARRAY>
- * 3: Direction in degree to rotate the object after attachTo (optional; default: 0) <NUMBER>
+ * 3: Direction in degrees to rotate the object after attachTo (optional; default: 0) <NUMBER>
  * 4: Override weight limit (optional; default: false) <BOOL>
  *
  * Return Value:
@@ -38,8 +38,6 @@ _object setVariable [QGVAR(dragDirection), _direction];
 _object setVariable [QGVAR(ignoreWeightDrag), _ignoreWeightDrag];
 _object setVariable [QGVAR(travois), objNull];
 _object setVariable [QGVAR(onTravois), false];
-
-// add action to class if it is not already present
 
 // add action to class if it is not already present
 private _type = typeOf _object;
@@ -106,8 +104,46 @@ _packupAction =
     }
 ] call EFUNC(interact_menu,createAction);
 
+
+_loadAction = 
+[
+    QGVAR(loadIntoVehicle), 
+    "Load Travois", 
+    "", 
+    {}, 
+    {
+        params["_target", "_player", "_params"];
+        [_player, _target, objNull] call FUNC(canLoadTravois)
+    },
+    {
+        params["_target", "_player", "_params"];
+        [_target] call FUNC(addLoadTravoisActions);
+    }
+] call EFUNC(interact_menu,createAction);
+
+
+
+_unloadAction = 
+[
+    QGVAR(loadIntoVehicle), 
+    "Unload Travois", 
+    "", 
+    {
+        params["_target", "_player", "_params"];
+        [_player, _target] call FUNC(doUnloadTravois);
+    }, 
+    {
+        params["_target", "_player", "_params"];
+        [_player, _target] call FUNC(canUnloadTravois);
+    }
+] call EFUNC(interact_menu,createAction);
+
+
+
 [_type, 0, ["ACE_MainActions"], _dragAction] call EFUNC(interact_menu,addActionToClass);
 [_type, 0, ["ACE_MainActions"], _placeOnAction] call EFUNC(interact_menu,addActionToClass);
 [_type, 0, ["ACE_MainActions"], _packupAction] call EFUNC(interact_menu,addActionToClass);
+[_type, 0, ["ACE_MainActions"], _loadAction] call EFUNC(interact_menu,addActionToClass);
+[_type, 0, ["ACE_MainActions"], _unloadAction] call EFUNC(interact_menu,addActionToClass);
 [_type, 0, [], _dropAction] call EFUNC(interact_menu,addActionToClass);
 LOGF_1("Completed adding actions to class %1", _type);

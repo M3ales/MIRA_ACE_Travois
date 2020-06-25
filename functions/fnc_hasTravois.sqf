@@ -8,5 +8,5 @@ _travois = ["MIRA_ACE_Travois"];
 		_hasItem = true;
 	};
 } forEach weapons _unit;
-LOGF_2("%1 hasTravois: %2", _unit, _hasItem);
+LOGF_2("%1.hasTravois : %2", _unit, _hasItem);
 _hasItem

@@ -1,3 +1,4 @@
+#include "function_macros.hpp"
 params ["_object"];
 
-[_object] call ace_dragging_fnc_isObjectOnObject;
+[_object] call EFUNC(dragging,isObjectOnObject);

@@ -29,3 +29,7 @@ if (_player getVariable [QGVAR(isDragging), false] || !(_unit getVariable [QGVAR
         [_unit, _draggedObject] call FUNC(dropObject);
     };
 };
+
+if(_unit call FUNC(isOnTravois)) then {
+    
+};
